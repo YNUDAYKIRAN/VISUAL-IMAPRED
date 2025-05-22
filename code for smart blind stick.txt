@@ -1,0 +1,50 @@
+const int trigPin = 9; // Trigger Pin of Ultrasonic Sensor
+const int echoPin = 8; // Echo Pin of Ultrasonic Sensor
+const int motorPin = 10;
+const int motorPin1 = 11;
+
+void setup () {
+  Serial.begin(9600); // Starting Serial Terminal
+  pinMode (trigPin, OUTPUT);
+  pinMode (motorPin, OUTPUT);
+   pinMode (motorPin1, OUTPUT);
+  pinMode (echoPin, INPUT);
+  digitalWrite (motorPin, LOW);
+  digitalWrite (motorPin1, LOW);
+}
+void loop () 
+{
+  long duration, inches, cm;
+  digitalWrite (trigPin, LOW);
+  delayMicroseconds (2);
+  digital Write (trig Pin, HIGH);
+  delay Microseconds (10);
+  digital Write (trig Pin, LOW);
+  duration = pulse in (echo Pin, HIGH);
+cm = microsecondsToCentimeters(duration);
+Serial.print(cm);
+Serial.print("cm");
+Serial.println();
+delay (100);
+  if (cm > 0 && cm <= 7)
+  {
+    Serial.println("TAP ON");
+    digital Write (motor Pin, HIGH);
+    digital Write (motorPin1, HIGH);
+  }
+  else if (cm > 7)
+  {
+    Serial.println("TAP OFF");
+    digital Write (motor Pin, LOW);
+     digital Write (motorPin1, LOW);
+  }
+  delay (9000);
+}
+long microsecondsToInches (long microseconds) {
+return microseconds / 74 / 2;
+}
+long microsecondsToCentimeters (long microseconds) {
+return microseconds / 29 / 2;
+}
+
+ 
